@@ -1,0 +1,40 @@
+* {
+    margin: 0;
+    padding: 0;
+    color: #d6d6d6;
+    font-family: Roboto,sans-serif;
+    font-weight: 300;
+}
+
+body {
+    background-color: rgb(60, 60, 60);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+    border: rgb(122, 27, 122) solid 2px;
+    background-color: #7B4DC7;
+    width: 250px;
+    height: 50px;
+    border: none;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 14px;
+    transition-duration: 0.3s;
+}
+
+button:hover {
+    filter: brightness(1.2);    
+}
+
+a {
+    text-decoration: none;
+    font-size: 17px;
+    padding-top: 17px;
+    padding-bottom: 17px;
+    padding-left: 52px;
+    padding-right: 52px;
+}

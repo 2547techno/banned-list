@@ -1,0 +1,5 @@
+{
+    "CLIENT_ID": "x",
+    "CLIENT_SECRET": "x",
+    "REDIRECT_URI": "http://localhost/auth/redirect"
+}

@@ -1,0 +1,10 @@
+html 
+    head 
+        title="Banned List"
+    style
+      include style.css
+
+    body 
+        button 
+            a(href=`https://id.twitch.tv/oauth2/authorize?client_id=1gos8y5rs7x9z5v4tlyruofaqb3nyd&redirect_uri=${encodeURIComponent(REDIRECT_URI)}&response_type=code&scope=moderation%3Aread`) GENERATE LIST
+
