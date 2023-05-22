@@ -26,7 +26,16 @@ router.get("/", async (req,res) => {
 
     let queryString = bannedList.map(u => u["user_login"]).join(",")
 
-    res.redirect(`/list?logins=${queryString}`)
+
+    const list = bannedList.map(u => u["user_login"])
+    let listStr = "<pre>";
+    for(let user of list    ) {
+        listStr += `${user}<br>`
+    }
+    listStr += "</pre>"
+
+    res.send(listStr)
+    // res.redirect(`/list?logins=${queryString}`)
 })
 
 async function generateToken(code) {
