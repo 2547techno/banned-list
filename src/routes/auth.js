@@ -34,7 +34,7 @@ router.get("/", async (req,res) => {
     }
     listStr += "</pre>"
 
-    saveList(list, user.login)
+    saveList(bannedList, user.login)
     res.send(listStr)
     // res.redirect(`/list?logins=${queryString}`)
 })
@@ -131,7 +131,8 @@ function saveList(list, username) {
     const now = new Date().getTime();
 
     console.log("write");
-    fs.writeFileSync(`lists/${username}-${now}.txt`, list.join("\n"))
+    fs.writeFileSync(`lists/${username}-${now}-ids.txt`, list.map(u => u.user_id).join("\n"))
+    fs.writeFileSync(`lists/${username}-${now}-logins.txt`, list.map(u => u.user_login).join("\n"))
 }
 
 module.exports = router;
