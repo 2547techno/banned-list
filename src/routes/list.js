@@ -10,7 +10,7 @@ router.get("/", (req,res) => {
         return res.send("No users!")
     }
 
-    listStr = "<pre>";
+    let listStr = "<pre>";
     for(let user of list) {
         listStr += `${user}<br>`
     }
