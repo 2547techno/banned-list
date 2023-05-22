@@ -27,10 +27,10 @@ router.get("/", async (req,res) => {
 
     // let queryString = bannedList.map(u => u["user_login"]).join(",")
 
-    const list = bannedList.map(u => u["user_login"])
+    const list = bannedList.map(u => u["user_id"])
     let listStr = "<pre>";
-    for(let login of list) {
-        listStr += `${login}<br>`
+    for(let id of list) {
+        listStr += `${id}<br>`
     }
     listStr += "</pre>"
 
@@ -87,7 +87,15 @@ async function getBannedList(token, channel_id) {
         if (res.status != 200) {
             console.log("Status: " + res.status);
             console.log(json);
-            return [{user_login: "RATE_LIMIT_REACHED"}].concat(list).concat([{user_login: "RATE_LIMIT_REACHED"}])
+            return [{
+                user_login: "RATE_LIMIT_REACHED",
+                user_id: "RATE_LIMIT_REACHED"
+            }]
+            .concat(list)
+            .concat([{
+                user_login: "RATE_LIMIT_REACHED",
+                user_id: "RATE_LIMIT_REACHED"
+            }])
         }
         cursor = json.pagination.cursor;
         list = list.concat(json.data)
