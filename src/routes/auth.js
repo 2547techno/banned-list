@@ -82,6 +82,7 @@ async function getBannedList(token, channel_id) {
     let cursor;
     
     while(true) {
+        await new Promise(resolve => setTimeout(resolve, 500));
         const res = await requestBannedList(token, channel_id, cursor)
         const json = await res.json();
         if (res.status != 200) {
