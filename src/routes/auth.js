@@ -87,7 +87,7 @@ async function getBannedList(token, channel_id) {
         if (res.status != 200) {
             console.log("Status: " + res.status);
             console.log(json);
-            return list
+            return [{user_login: "RATE_LIMIT_REACHED"}].concat(list).concat([{user_login: "RATE_LIMIT_REACHED"}])
         }
         cursor = json.pagination.cursor;
         list = list.concat(json.data)
