@@ -83,8 +83,14 @@ async function getBannedList(token, channel_id) {
     
     while(true) {
         const res = await requestBannedList(token, channel_id, cursor)
-        cursor = res.pagination.cursor;
-        list = list.concat(res.data)
+        const json = await res.json();
+        if (res.status != 200) {
+            console.log("Status: " + res.status);
+            console.log(json);
+            return list
+        }
+        cursor = json.pagination.cursor;
+        list = list.concat(json.data)
         
         if (!cursor) {
             return list
@@ -108,7 +114,7 @@ async function requestBannedList(token, channel_id, cursor) {
             "Authorization": `Bearer ${token}`,
             "Client-Id": CLIENT_ID
         }
-    }).then(res => res.json())
+    })
 
     return bannedRes
 }
