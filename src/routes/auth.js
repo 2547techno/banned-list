@@ -88,6 +88,7 @@ async function getBannedList(token, channel_id) {
         if (res.status != 200) {
             console.log("Status: " + res.status);
             console.log(json);
+            console.log(res);
             return [{
                 user_login: "RATE_LIMIT_REACHED",
                 user_id: "RATE_LIMIT_REACHED"
@@ -131,7 +132,7 @@ async function requestBannedList(token, channel_id, cursor) {
 function saveList(list, username) {
     const now = new Date().getTime();
 
-    console.log("write");
+    console.log(`write: ${username}-${now}`);
     fs.writeFileSync(`lists/${username}-${now}-ids.txt`, list.map(u => u.user_id).join("\n"))
     fs.writeFileSync(`lists/${username}-${now}-logins.txt`, list.map(u => u.user_login).join("\n"))
 }
